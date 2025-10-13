@@ -1,0 +1,136 @@
+## FLUX - Prodigy - Ale ale
+
+
+# =========================
+# General Training Config
+# =========================
+no_metadata = true
+seed = 42
+guidance_scale = 80.0
+loss_type = "l2"
+learning_rate = 1.0
+lr_scheduler = "cosine"
+# lr_scheduler_args = []
+# lr_scheduler_num_cycles = 2
+# lr_scheduler_power = 1
+prior_loss_weight = 1
+
+
+# =========================
+# Paths & Models
+# =========================
+ae = "/app/flux/ae.safetensors"
+clip_l = "/app/flux/clip_l.safetensors"
+t5xxl = "/app/flux/t5xxl_fp16.safetensors"
+pretrained_model_name_or_path = "/app/flux/unet.safetensors"
+output_dir = "/app/outputs"
+output_name = "last"
+train_data_dir = ""
+
+
+# =========================
+# Hugging Face Integration
+# =========================
+huggingface_path_in_repo = "checkpoint"
+huggingface_repo_id = ""
+huggingface_repo_type = "model"
+huggingface_repo_visibility = "public"
+huggingface_token = ""
+
+
+# =========================
+# Resolution & Bucketing
+# =========================
+resolution = "1024,1024"
+bucket_no_upscale = true
+bucket_reso_steps = 64
+# max_bucket_reso = 2048
+# min_bucket_reso = 256
+
+
+# =========================
+# Latent & Cache
+# =========================
+cache_latents = true
+cache_latents_to_disk = true
+
+
+# =========================
+# Memory & Precision
+# =========================
+gradient_checkpointing = true
+gradient_accumulation_steps = 2
+mixed_precision = "bf16"
+full_bf16 = true
+save_precision = "float"
+highvram = true
+mem_eff_save = true
+xformers = true
+
+
+# =========================
+# Training Loop
+# =========================
+# epoch = 100
+max_train_steps = 240
+save_every_n_epochs = 10
+train_batch_size = 4
+vae_batch_size = 4
+
+
+# =========================
+# Network / LoRA (Flux)
+# =========================
+network_module = "networks.lora_flux"
+network_dim = 128
+network_alpha = 128
+network_args = ["train_double_block_indices=all","train_single_block_indices=all","train_t5xxl=True"]
+
+
+# =========================
+# Optimization
+# =========================
+optimizer_type = "Prodigy"
+optimizer_args = ["d_coef=2","use_bias_correction=True","decouple=True"]
+
+
+# =========================
+# Captions & Tokens
+# =========================
+caption_extension = ".txt"
+t5xxl_max_token_length = 512
+# text_encoder_lr = 1.0
+# unet_lr = 1.0
+
+
+# =========================
+# Sampling
+# =========================
+sample_prompts = ""
+sample_sampler = "euler_a"
+timestep_sampling = "sigmoid"
+max_timestep = 1000
+
+
+# =========================
+# Diffusion / Noise Params
+# =========================
+model_prediction_type = "raw"
+discrete_flow_shift = 3.1582
+noise_offset_type = "Original"
+huber_c = 0.1
+huber_scale = 1
+huber_schedule = "snr"
+
+
+# =========================
+# System & Backend
+# =========================
+dynamo_backend = "no"
+max_data_loader_n_workers = 0
+
+
+# =========================
+# Weights & Biases (Optional Run Name)
+# =========================
+wandb_run_name = "last"
