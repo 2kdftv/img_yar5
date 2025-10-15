@@ -40,7 +40,7 @@ save_model_as = "safetensors"
 save_precision = "bf16"
 
 # Training Control
-max_train_epochs = 20
+max_train_epochs = 25
 save_every_n_epochs = 5
 train_batch_size = 4
 gradient_accumulation_steps = 1
@@ -53,13 +53,13 @@ huber_c = 0.05
 huber_schedule = "snr"
 
 # Optimizer & Scheduler
-optimizer_type = "prodigy"
-optimizer_args = ["decouple=True", "d_coef=1", "weight_decay=0.001", "use_bias_correction=True", "safeguard_warmup=True"]
-learning_rate = 1
-unet_lr = 1
-text_encoder_lr = 1
+optimizer_type = "lion"
+optimizer_args = ["weight_decay=0.01", "betas=(0.9,0.99)"]
+learning_rate = 0.00003
+unet_lr = 0.00003
+text_encoder_lr = 0.000003
 lr_scheduler = "cosine"
-lr_warmup_steps = 100
+lr_warmup_steps = 80
 
 # Backend
 dynamo_backend = "no"
@@ -79,6 +79,6 @@ network_dropout = 0
 caption_dropout_rate = 0
 clip_skip = 1
 max_timestep = 1000
-min_snr_gamma = 5
+min_snr_gamma = 7
 scale_weight_norms = 5
 seed = 42
