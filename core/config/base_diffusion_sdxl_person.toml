@@ -54,11 +54,12 @@ huber_schedule = "snr"
 
 # Optimizer & Scheduler
 optimizer_type = "prodigy"
-optimizer_args = ["decouple=True", "d_coef=1", "weight_decay=0.01", "use_bias_correction=True", "safeguard_warmup=True"]
+optimizer_args = ["decouple=True", "d_coef=1", "use_bias_correction=True", "safeguard_warmup=True"]
 learning_rate = 1
 unet_lr = 1
 text_encoder_lr = 1
-lr_scheduler = "constant"
+lr_scheduler = "cosine"
+lr_warmup_steps = 25
 
 
 # Backend
