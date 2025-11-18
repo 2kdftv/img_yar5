@@ -1,18 +1,12 @@
-## FLUX - Prodigy - Ale ale
-
-
 # =========================
 # General Training Config
 # =========================
 no_metadata = true
 seed = 42
-guidance_scale = 80.0
+guidance_scale = 85.0
 loss_type = "l2"
 learning_rate = 1.0
 lr_scheduler = "cosine"
-# lr_scheduler_args = []
-# lr_scheduler_num_cycles = 2
-# lr_scheduler_power = 1
 prior_loss_weight = 1
 
 
@@ -44,8 +38,6 @@ huggingface_token = ""
 resolution = "1024,1024"
 bucket_no_upscale = true
 bucket_reso_steps = 64
-# max_bucket_reso = 2048
-# min_bucket_reso = 256
 
 
 # =========================
@@ -71,9 +63,8 @@ xformers = true
 # =========================
 # Training Loop
 # =========================
-# epoch = 100
-max_train_steps = 240
-save_every_n_epochs = 10
+max_train_steps = 256
+save_every_n_epochs = 8
 train_batch_size = 4
 vae_batch_size = 4
 
@@ -83,7 +74,7 @@ vae_batch_size = 4
 # =========================
 network_module = "networks.lora_flux"
 network_dim = 128
-network_alpha = 128
+network_alpha = 64
 network_args = ["train_double_block_indices=all","train_single_block_indices=all","train_t5xxl=True"]
 
 
@@ -91,7 +82,7 @@ network_args = ["train_double_block_indices=all","train_single_block_indices=all
 # Optimization
 # =========================
 optimizer_type = "Prodigy"
-optimizer_args = ["d_coef=2","use_bias_correction=True","decouple=True"]
+optimizer_args = ["d_coef=1","use_bias_correction=True","decouple=True"]
 
 
 # =========================
@@ -99,8 +90,6 @@ optimizer_args = ["d_coef=2","use_bias_correction=True","decouple=True"]
 # =========================
 caption_extension = ".txt"
 t5xxl_max_token_length = 512
-# text_encoder_lr = 1.0
-# unet_lr = 1.0
 
 
 # =========================
@@ -118,9 +107,6 @@ max_timestep = 1000
 model_prediction_type = "raw"
 discrete_flow_shift = 3.1582
 noise_offset_type = "Original"
-huber_c = 0.1
-huber_scale = 1
-huber_schedule = "snr"
 
 
 # =========================
