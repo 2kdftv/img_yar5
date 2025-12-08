@@ -38,7 +38,7 @@ network_args = [ "train_double_block_indices=all", "train_single_block_indices=a
 network_dim = 128                                                                                                                                                              
 network_module = "networks.lora_flux"                                                                                                                                          
 noise_offset_type = "Original"                                                                                                                                                 
-optimizer_args = ["decouple=True", "d_coef=1", "weight_decay=0.001", "use_bias_correction=True", "safeguard_warmup=True"]                                                                  
+optimizer_args = ["decouple=True", "d_coef=1", "weight_decay=0.0055", "use_bias_correction=True", "safeguard_warmup=True"]                                                                  
 optimizer_type = "prodigy"                                                                                                                                                   
 output_dir = "/app/outputs"                                                                                                                                          
 output_name = "last"                                                                                                                                                 
